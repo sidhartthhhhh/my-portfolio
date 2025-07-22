@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidhartha Singh - Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0a192f; /* Navy */
+            --primary-color: #64ffda; /* Mint Green */
+            --secondary-color: #112240; /* Lighter Navy */
+            --text-light: #ccd6f6; /* Light Slate */
+            --text-dark: #8892b0; /* Slate */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            z-index: -1;
+        }
+        .section {
+            padding: 6rem 0; /* Reduced vertical padding */
+        }
+        #hero {
+            min-height: 100vh; /* Keep hero section full height */
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .skill-card, .project-card {
+            background-color: var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover, .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+        .tooltip {
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            margin-left: 12px;
+        }
+        .has-tooltip:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div id="particles-js"></div>
+
+    <!-- Sidebar Navigation for Desktop -->
+    <aside class="fixed top-0 left-0 h-full w-20 bg-gray-900/50 backdrop-blur-lg border-r border-gray-800 z-40 hidden lg:flex flex-col items-center justify-between py-8">
+        <a href="#hero" class="text-3xl font-bold text-cyan-400">S.S</a>
+        <nav>
+            <ul class="space-y-8">
+                <li class="has-tooltip relative"><a href="#about" class="text-2xl text-gray-400 hover:text-cyan-400"><i class="fas fa-user"></i><span class="tooltip">About</span></a></li>
+                <li class="has-tooltip relative"><a href="#skills" class="text-2xl text-gray-400 hover:text-cyan-400"><i class="fas fa-cogs"></i><span class="tooltip">Skills</span></a></li>
+                <li class="has-tooltip relative"><a href="#journey" class="text-2xl text-gray-400 hover:text-cyan-400"><i class="fas fa-file-alt"></i><span class="tooltip">Journey</span></a></li>
+                <li class="has-tooltip relative"><a href="#projects" class="text-2xl text-gray-400 hover:text-cyan-400"><i class="fas fa-project-diagram"></i><span class="tooltip">Projects</span></a></li>
+                <li class="has-tooltip relative"><a href="#contact" class="text-2xl text-gray-400 hover:text-cyan-400"><i class="fas fa-envelope"></i><span class="tooltip">Contact</span></a></li>
+            </ul>
+        </nav>
+        <div class="flex flex-col space-y-6 text-xl text-gray-400">
+            <a href="https://github.com/sidhartthhhhh" target="_blank" class="hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </aside>
+    
+    <!-- Mobile Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-lg lg:hidden">
+         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-cyan-400">S.S.</a>
+            <button id="mobile-menu-button" class="text-2xl z-50 text-white">
+                <i id="menu-icon" class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+    <!-- Mobile Menu Overlay-->
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-900 z-40 hidden flex-col items-center justify-center space-y-8 text-2xl lg:hidden">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#journey" class="mobile-link">Journey</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+
+    <div class="lg:ml-20">
+        <main class="container mx-auto px-6 md:px-16">
+            <!-- Hero Section -->
+            <section id="hero" class="section flex flex-col justify-center">
+                <div class="max-w-4xl">
+                    <p class="text-lg text-cyan-400 mb-4 fade-in" style="transition-delay: 100ms;">Hi, my name is</p>
+                    <h1 class="text-4xl md:text-7xl font-bold text-gray-100 fade-in" style="transition-delay: 200ms;">Sidhartha Singh.</h1>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-400 mt-2 fade-in" style="transition-delay: 300ms;">
+                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    </h2>
+                    <p class="mt-6 max-w-xl text-lg text-gray-400 fade-in" style="transition-delay: 400ms;">
+                        I'm a software developer specializing in building resilient, high-throughput systems and creating exceptional digital experiences.
+                    </p>
+                    <div class="mt-8 fade-in" style="transition-delay: 500ms;">
+                        <a href="#projects" class="bg-cyan-500 text-white font-semibold px-8 py-4 rounded-md hover:bg-cyan-600 transition-all">
+                            Check out my work!
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section flex flex-col justify-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-gray-100 mb-12 relative">
+                        <span class="text-cyan-400">01.</span> About Me
+                    </h2>
+                    <div class="text-lg text-gray-400 space-y-4 max-w-4xl mx-auto">
+                        <p>Hello! I'm Sidhartha, a Computer Science undergraduate with a profound inclination for architecting robust and scalable software solutions. My journey into technology began with a curiosity for how complex systems work, which has since evolved into a dedicated pursuit of software engineering excellence.</p>
+                        <p>My experience spans from data-driven analysis to full-stack development. I thrive on solving intricate challenges within distributed architectures and am committed to writing clean, maintainable, and efficient code.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section flex flex-col justify-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-gray-100 mb-12 relative text-center">
+                        <span class="text-cyan-400">02.</span> Skills & Technologies
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Programming Languages</h3><p class="text-slate-400 leading-relaxed">Python, DSA, Java, TypeScript, JavaScript, C, Go</p></div>
+                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Software & System Architecture</h3><p class="text-slate-400 leading-relaxed">Object-Oriented Design, Distributed Systems, System Design</p></div>
+                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Core Knowledge</h3><p class="text-slate-400 leading-relaxed">Software Engineering, Computer Engineering, Computer Applications</p></div>
+                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Development Practices</h3><p class="text-slate-400 leading-relaxed">Agile/Scrum, SDLC, CI/CD, Unit Testing, Debugging</p></div>
+                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Libraries/Frameworks</h3><p class="text-slate-400 leading-relaxed">React, NodeJS, Express, Flask, LangChain, Django</p></div>
+                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Database Management</h3><p class="text-slate-400 leading-relaxed">MySQL, PostgreSQL, SQLite, MongoDB, Redis</p></div>
+                        <div class="skill-card p-6 rounded-lg md:col-span-2 lg:col-span-1"><h3 class="text-xl font-bold text-cyan-400 mb-4">Tools & Platforms</h3><p class="text-slate-400 leading-relaxed">Linux, Git, Github, Docker, Jira, Render, AWS (EC2, S3, RDS)</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journey Section -->
+            <section id="journey" class="section flex flex-col justify-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-gray-100 mb-12 relative text-center">
+                        <span class="text-cyan-400">03.</span> My Journey
+                    </h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <!-- Left Column: Experience & Education -->
+                        <div>
+                            <!-- Work Experience -->
+                            <div class="mb-16">
+                                <h3 class="text-2xl font-semibold text-slate-200 mb-8 flex items-center gap-4"><i class="fas fa-briefcase text-cyan-400"></i> Work Experience</h3>
+                                <div class="border-l-2 border-gray-700 pl-8 space-y-12 relative">
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><p class="text-sm text-cyan-400">Jun 2024 - May 2025</p><h4 class="text-xl font-bold text-slate-200 mt-1">Data Science Intern</h4><p class="text-md text-slate-400 font-semibold">PCON Utilities Pvt. Ltd.</p><p class="text-slate-400 mt-2">Orchestrated Python and SQL-driven analytical pipelines, collaborated with stakeholders to gather requirements, and performed root cause analysis to resolve data inconsistencies.</p></div>
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><p class="text-sm text-cyan-400">Oct 2023 - Dec 2023</p><h4 class="text-xl font-bold text-slate-200 mt-1">Full Stack Developer Intern</h4><p class="text-md text-slate-400 font-semibold">DEVTOWN</p><p class="text-slate-400 mt-2">Engineered resilient backend services and APIs in an Agile environment. Contributed to sprint planning and performed systematic debugging to resolve critical software defects.</p></div>
+                                </div>
+                            </div>
+                            <!-- Education -->
+                            <div>
+                                <h3 class="text-2xl font-semibold text-slate-200 mb-8 flex items-center gap-4"><i class="fas fa-graduation-cap text-cyan-400"></i> Education</h3>
+                                <div class="border-l-2 border-gray-700 pl-8 space-y-12 relative">
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><p class="text-sm text-cyan-400">2021 - 2025</p><h4 class="text-xl font-bold text-slate-200 mt-1">B.Tech in Computer Science</h4><p class="text-md text-slate-400 font-semibold">Gandhi Institute for Technology (GIFT)</p><p class="text-slate-400 mt-2">CGPA: 7.34/10</p></div>
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><p class="text-sm text-cyan-400">Completed May 2021</p><h4 class="text-xl font-bold text-slate-200 mt-1">PCM with Computer Science</h4><p class="text-md text-slate-400 font-semibold">Model School Dalamianagar</p><p class="text-slate-400 mt-2">CGPA: 9.32/10</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Column: Certifications -->
+                        <div>
+                             <div class="mb-16">
+                                <h3 class="text-2xl font-semibold text-slate-200 mb-8 flex items-center gap-4"><i class="fas fa-certificate text-cyan-400"></i> Certifications</h3>
+                                <div class="border-l-2 border-gray-700 pl-8 space-y-12 relative">
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><h4 class="text-xl font-bold text-slate-200">AWS Solution Architecture</h4><p class="text-md text-slate-400 font-semibold">Job Simulation</p></div>
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><h4 class="text-xl font-bold text-slate-200">Python Essentials</h4><p class="text-md text-slate-400 font-semibold">Cisco</p></div>
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><h4 class="text-xl font-bold text-slate-200">SQL Intermediate</h4><p class="text-md text-slate-400 font-semibold">HackerRank</p></div>
+                                    <div class="relative"><div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-cyan-400 border-4 border-gray-900"></div><h4 class="text-xl font-bold text-slate-200">Google Analytics</h4><p class="text-md text-slate-400 font-semibold">Google</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section flex flex-col justify-center">
+                 <div class="fade-in">
+                    <h2 class="text-3xl font-bold text-gray-100 mb-12 relative text-center">
+                        <span class="text-cyan-400">04.</span> My Projects
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Project Card 1 -->
+                        <div class="project-card rounded-lg overflow-hidden flex flex-col">
+                            <div class="p-6 flex-grow"><div class="flex justify-between items-center mb-4"><i class="far fa-folder text-4xl text-cyan-400"></i><a href="https://github.com/sidhartthhhhh/Inventory-Management-System" target="_blank" class="text-xl text-gray-400 hover:text-cyan-400"><i class="fab fa-github"></i></a></div><h3 class="text-xl font-bold text-gray-100 mb-2 hover:text-cyan-400"><a href="https://github.com/sidhartthhhhh/Inventory-Management-System" target="_blank">Inventory Management System</a></h3><p class="text-gray-400 text-sm">A full-stack inventory system using Django, integrating SQLite for transactional data and role-based access control.</p></div>
+                            <div class="p-6 pt-0 flex flex-wrap gap-2 text-xs text-gray-400"><span class="bg-gray-800/50 px-2 py-1 rounded">Django</span><span class="bg-gray-800/50 px-2 py-1 rounded">Python</span><span class="bg-gray-800/50 px-2 py-1 rounded">SQLite</span></div>
+                        </div>
+                        <!-- Project Card 2 -->
+                        <div class="project-card rounded-lg overflow-hidden flex flex-col">
+                            <div class="p-6 flex-grow"><div class="flex justify-between items-center mb-4"><i class="far fa-folder text-4xl text-cyan-400"></i><a href="https://github.com/sidhartthhhhh/Real-Estate-News-Assistant" target="_blank" class="text-xl text-gray-400 hover:text-cyan-400"><i class="fab fa-github"></i></a></div><h3 class="text-xl font-bold text-gray-100 mb-2 hover:text-cyan-400"><a href="https://github.com/sidhartthhhhh/Real-Estate-News-Assistant" target="_blank">Real Estate News Assistant</a></h3><p class="text-gray-400 text-sm">A RAG-based assistant for fast, accurate, and cited summaries from real estate news articles using LLAMA 3.</p></div>
+                            <div class="p-6 pt-0 flex flex-wrap gap-2 text-xs text-gray-400"><span class="bg-gray-800/50 px-2 py-1 rounded">LLM</span><span class="bg-gray-800/50 px-2 py-1 rounded">RAG</span><span class="bg-gray-800/50 px-2 py-1 rounded">Python</span><span class="bg-gray-800/50 px-2 py-1 rounded">Groq API</span></div>
+                        </div>
+                        <!-- Project Card 3 -->
+                        <div class="project-card rounded-lg overflow-hidden flex flex-col">
+                            <div class="p-6 flex-grow"><div class="flex justify-between items-center mb-4"><i class="far fa-folder text-4xl text-cyan-400"></i><a href="https://github.com/sidhartthhhhh/leet-code-judge" target="_blank" class="text-xl text-gray-400 hover:text-cyan-400"><i class="fab fa-github"></i></a></div><h3 class="text-xl font-bold text-gray-100 mb-2 hover:text-cyan-400"><a href="https://github.com/sidhartthhhhh/leet-code-judge" target="_blank">LeetCode Judge</a></h3><p class="text-gray-400 text-sm">An online judge to compile and run code in isolated Docker containers, featuring a REST API for code submission.</p></div>
+                            <div class="p-6 pt-0 flex flex-wrap gap-2 text-xs text-gray-400"><span class="bg-gray-800/50 px-2 py-1 rounded">Node.js</span><span class="bg-gray-800/50 px-2 py-1 rounded">Express</span><span class="bg-gray-800/50 px-2 py-1 rounded">Docker</span><span class="bg-gray-800/50 px-2 py-1 rounded">REST API</span></div>
+                        </div>
+                        <!-- Project Card 4 -->
+                        <div class="project-card rounded-lg overflow-hidden flex flex-col">
+                            <div class="p-6 flex-grow"><div class="flex justify-between items-center mb-4"><i class="far fa-folder text-4xl text-cyan-400"></i><a href="https://github.com/sidhartthhhhh/url-shortener" target="_blank" class="text-xl text-gray-400 hover:text-cyan-400"><i class="fab fa-github"></i></a></div><h3 class="text-xl font-bold text-gray-100 mb-2 hover:text-cyan-400"><a href="https://github.com/sidhartthhhhh/url-shortener" target="_blank">URL Shortener</a></h3><p class="text-gray-400 text-sm">A scalable URL shortening service with a clean API, built with a focus on high availability and low latency using Go and Redis.</p></div>
+                            <div class="p-6 pt-0 flex flex-wrap gap-2 text-xs text-gray-400"><span class="bg-gray-800/50 px-2 py-1 rounded">Go</span><span class="bg-gray-800/50 px-2 py-1 rounded">Redis</span><span class="bg-gray-800/50 px-2 py-1 rounded">REST API</span><span class="bg-gray-800/50 px-2 py-1 rounded">Backend</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section flex flex-col justify-center text-center">
+                <div class="max-w-xl mx-auto fade-in">
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-2">05. What's Next?</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-gray-100 mb-4">Get In Touch</h3>
+                    <p class="text-gray-400 mb-8">
+                        I'm currently seeking new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll do my best to get back to you!
+                    </p>
+                    <a href="mailto:sidhartthhhhh712@gmail.com" class="inline-block border-2 border-cyan-400 text-cyan-400 font-semibold px-8 py-4 rounded-md hover:bg-cyan-400 hover:text-gray-900 transition-all text-lg">
+                        Say Hello
+                    </a>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center py-8 text-gray-500 text-sm lg:ml-20">
+            <div>Designed & Built by Sidhartha Singh</div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                "opacity": { "value": 0.3, "random": false, "anim": { "enable": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#8892b0", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+
+        // Typing effect script
+        const typingText = document.getElementById('typing-text');
+        const phrases = ["I build things for the web.", "I create robust backends.", "I design scalable systems."];
+        let phraseIndex = 0;
+        let currentPhrase = "";
+        let isDeleting = false;
+
+        function type() {
+            const fullPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                currentPhrase = fullPhrase.substring(0, currentPhrase.length - 1);
+            } else {
+                currentPhrase = fullPhrase.substring(0, currentPhrase.length + 1);
+            }
+            typingText.innerHTML = currentPhrase;
+
+            let typeSpeed = 150;
+            if (isDeleting) { typeSpeed /= 2; }
+
+            if (!isDeleting && currentPhrase === fullPhrase) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && currentPhrase === "") {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // Optional: remove class to re-trigger animation on scroll up
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = document.getElementById('menu-icon');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            document.body.classList.toggle('overflow-hidden');
+            
+            if (mobileMenu.classList.contains('flex')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Flip card on touch for mobile
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', () => {
+                if (window.innerWidth < 1024) { // Only apply on touch devices
+                    card.classList.toggle('is-flipped');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
