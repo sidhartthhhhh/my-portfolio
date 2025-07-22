@@ -103,10 +103,8 @@
                 <li class="has-tooltip relative"><a href="#contact" class="text-2xl text-gray-400 hover:text-cyan-400"><i class="fas fa-envelope"></i><span class="tooltip">Contact</span></a></li>
             </ul>
         </nav>
-        <div class="flex flex-col space-y-6 text-xl text-gray-400">
-            <a href="https://github.com/sidhartthhhhh" target="_blank" class="hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-        </div>
+        <!-- Social icons are now in the hero section -->
+        <div></div>
     </aside>
     
     <!-- Mobile Header -->
@@ -141,7 +139,16 @@
                     <p class="mt-6 max-w-xl text-lg text-gray-400 fade-in" style="transition-delay: 400ms;">
                         I'm a software developer specializing in building resilient, high-throughput systems and creating exceptional digital experiences.
                     </p>
-                    <div class="mt-8 fade-in" style="transition-delay: 500ms;">
+                    <div class="mt-8 flex items-center space-x-6 fade-in" style="transition-delay: 500ms;">
+                        <a href="https://github.com/sidhartthhhhh" target="_blank" class="text-3xl text-gray-400 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/sidhartthhhhh/" target="_blank" class="text-3xl text-gray-400 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://stackoverflow.com/users/21678074/sidhartthhhhh" target="_blank" class="text-3xl text-gray-400 hover:text-cyan-400 transition-colors"><i class="fab fa-stack-overflow"></i></a>
+                        <a href="https://leetcode.com/u/sidhartthhh/" target="_blank" class="text-3xl text-gray-400 hover:text-cyan-400 transition-colors"><i class="fas fa-code"></i></a>
+                        <a href="https://www.hackerrank.com/profile/singhnishant294" target="_blank" class="text-3xl text-gray-400 hover:text-cyan-400 transition-colors"><i class="fab fa-hackerrank"></i></a>
+                        <!-- Replace # with your actual resume link -->
+                        <a href="https://drive.google.com/file/d/1VNm2S0a2HrFHMT_pYHU19lDIkdxBSwxM/view?usp=sharing" target="_blank" class="text-3xl text-gray-400 hover:text-cyan-400 transition-colors"><i class="fas fa-file-arrow-down"></i></a>
+                    </div>
+                    <div class="mt-8 fade-in" style="transition-delay: 600ms;">
                         <a href="#projects" class="bg-cyan-500 text-white font-semibold px-8 py-4 rounded-md hover:bg-cyan-600 transition-all">
                             Check out my work!
                         </a>
@@ -168,14 +175,60 @@
                     <h2 class="text-3xl font-bold text-gray-100 mb-12 relative text-center">
                         <span class="text-cyan-400">02.</span> Skills & Technologies
                     </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Programming Languages</h3><p class="text-slate-400 leading-relaxed">Python, DSA, Java, TypeScript, JavaScript, C, Go</p></div>
-                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Software & System Architecture</h3><p class="text-slate-400 leading-relaxed">Object-Oriented Design, Distributed Systems, System Design</p></div>
-                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Core Knowledge</h3><p class="text-slate-400 leading-relaxed">Software Engineering, Computer Engineering, Computer Applications</p></div>
-                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Development Practices</h3><p class="text-slate-400 leading-relaxed">Agile/Scrum, SDLC, CI/CD, Unit Testing, Debugging</p></div>
-                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Libraries/Frameworks</h3><p class="text-slate-400 leading-relaxed">React, NodeJS, Express, Flask, LangChain, Django</p></div>
-                        <div class="skill-card p-6 rounded-lg"><h3 class="text-xl font-bold text-cyan-400 mb-4">Database Management</h3><p class="text-slate-400 leading-relaxed">MySQL, PostgreSQL, SQLite, MongoDB, Redis</p></div>
-                        <div class="skill-card p-6 rounded-lg md:col-span-2 lg:col-span-1"><h3 class="text-xl font-bold text-cyan-400 mb-4">Tools & Platforms</h3><p class="text-slate-400 leading-relaxed">Linux, Git, Github, Docker, Jira, Render, AWS (EC2, S3, RDS)</p></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="skill-card p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4">Programming Languages</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Java</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">TypeScript</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Go</span>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4">Software Architecture</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">OOD</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Distributed Systems</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">System Design</span>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4">Libraries/Frameworks</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">React</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Node.js</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Django</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Express</span>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4">Database Management</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">MySQL</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">PostgreSQL</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">MongoDB</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Redis</span>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4">Development Practices</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Agile/Scrum</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">CI/CD</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Unit Testing</span>
+                            </div>
+                        </div>
+                         <div class="skill-card p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4">Tools & Platforms</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Git</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">AWS</span>
+                                <span class="bg-gray-800/50 text-slate-300 text-sm font-medium px-3 py-1 rounded-full">Jira</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
