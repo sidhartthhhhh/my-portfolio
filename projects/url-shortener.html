@@ -243,7 +243,7 @@
     <main class="section">
         <section class="mb-12">
             <h1 class="page-hero-title">URL Shortener</h1>
-            <p class="page-hero-tagline">[A concise tagline or subtitle for the URL Shortener]</p>
+            <p class="page-hero-tagline">A Full-Stack Django Project</p>
             
             <img src="assets/urlshortener.png" alt="URL Shortener Hero Image" class="content-image">
             
@@ -258,23 +258,24 @@
         </section>
 
         <section class="mb-12">
-            <h2>Overview & Problem Solved</h2>
-            <p>
-                [Detailed paragraph 1: Describe the project's purpose, the problem it addresses, and its overall goal for the URL Shortener.]
-            </p>
-            <p>
-                [Detailed paragraph 2: Elaborate on the context or the challenge you aimed to overcome with this project, specifically for the URL Shortener.]
-            </p>
-        </section>
+  <h2>Overview & Problem Solved</h2>
+  <p>
+    The URL Shortener is a lightweight full-stack web application that converts long, unwieldy URLs into concise, easy-to-share short links. It addresses the common problem of sharing lengthy URLs that are difficult to manage, especially on social media, documents, or mobile devices.
+  </p>
+  <p>
+    The goal of the project was to build a fully functional service similar to Bitly or TinyURL, with a clean user interface and reliable backend logic. This project also served as a hands-on opportunity to integrate frontend and backend technologies while solving real-world challenges like collision avoidance and redirection routing.
+  </p>
+</section>
 
-        <section class="mb-12">
-            <h2>Key Features</h2>
-            <ul>
-                <li><strong>Feature 1:</strong> [Describe a core feature of the URL Shortener and what it enables.]</li>
-                <li><strong>Feature 2:</strong> [Describe another key feature or functionality of the URL Shortener.]</li>
-                <li><strong>Feature 3:</strong> [Add more features as needed for the URL Shortener.]</li>
-            </ul>
-        </section>
+<section class="mb-12">
+  <h2>Key Features</h2>
+  <ul>
+    <li><strong>Short URL Generation:</strong> Automatically generates a unique 6-character short code for any valid long URL submitted by the user.</li>
+    <li><strong>Redirection Logic:</strong> When a user visits the short URL, they are instantly redirected to the corresponding long/original URL through a backend route.</li>
+    <li><strong>Minimal UI with Copy Support:</strong> The frontend is built to be responsive and user-friendly, allowing users to copy the generated short link with one click and receive confirmation feedback.</li>
+  </ul>
+</section>
+
 
         <section class="mb-12">
             <h2>Technologies</h2>
@@ -289,35 +290,35 @@
         </section>
 
         <section class="mb-12">
-            <h2>My Role & Implementation</h2>
-            <p>
-                [Describe your specific contributions and responsibilities in the URL Shortener project. What parts did you build? What decisions did you make?]
-            </p>
-            <p>
-                [Explain key implementation details, architectural choices, or design patterns used for the URL Shortener. You can add more paragraphs or even sub-headings for deeper dives.]
-            </p>
-            <img src="assets/urlss.png" alt="URL Shortener Screenshot 1" class="content-image">
-        </section>
+  <h2>Implementation</h2>
+  <p>
+    I developed both the frontend and backend of the URL Shortener. On the frontend, I used HTML, CSS, and JavaScript to build a clean UI with support for real-time feedback and link copying. For the backend, I implemented a Node.js + Express.js server that handles route logic, short URL generation, and redirection.
+  </p>
+  <p>
+    I chose a base62 encoding scheme (using alphanumeric characters) to generate compact short links. The project follows a simple RESTful design and maintains a mapping of original URLs to short codes in-memory (or could be extended to use a database). I also added error handling for invalid URLs and edge cases, ensuring robustness.
+  </p>
+  <img src="assets/urlss.png" alt="URL Shortener Screenshot 1" class="content-image">
+</section>
 
-        <section class="mb-12">
-            <h2>Challenges & Solutions</h2>
-            <p>
-                [Discuss a specific technical challenge you faced during the URL Shortener project and how you overcame it.]
-            </p>
-            <p>
-                [What did you learn from this URL Shortener project? Any new skills acquired or approaches discovered?]
-            </p>
-            </section>
-        
-        <section>
-            <h2>Outcomes & Impact</h2>
-            <p>
-                [What were the results of your URL Shortener project? Did it achieve its goals? Any metrics or quantifiable impacts?]
-            </p>
-            <p>
-                [How does this URL Shortener project demonstrate your skills and capabilities as a developer?]
-            </p>
-        </section>
+<section class="mb-12">
+  <h2>Challenges & Solutions</h2>
+  <p>
+    One key challenge was ensuring the uniqueness of each short URL while keeping the implementation lightweight and collision-free. I solved this by using a counter-based system with base62 conversion, which avoids randomness and guarantees uniqueness without a database.
+  </p>
+  <p>
+    Through this project, I strengthened my understanding of URL encoding/decoding, routing in Express.js, and the importance of simple but secure logic for public-facing services. I also practiced client-server integration and writing minimal yet maintainable code.
+  </p>
+</section>
+
+<section>
+  <h2>Outcomes & Impact</h2>
+  <p>
+    The URL Shortener functions reliably in both local and hosted environments and achieved its goal of providing quick, clean, and copyable short links. It demonstrates the full lifecycle of a web tool — from input processing to output rendering with functional UX.
+  </p>
+  <p>
+    This project highlights my ability to build complete web applications from scratch, apply efficient algorithms (base62 encoding), and design user-friendly interfaces. It also reflects my focus on clean code, usability, and performance — crucial skills for a modern web developer.
+  </p>
+</section>
 
         <div class="text-center mt-12">
             <a href="../index.html#projects" class="btn-secondary">
