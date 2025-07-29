@@ -243,7 +243,7 @@
     <main class="section">
         <section class="mb-12">
             <h1 class="page-hero-title">LeetCode Judge</h1>
-            <p class="page-hero-tagline">[A concise tagline or subtitle for the LeetCode Judge]</p>
+            <p class="page-hero-tagline">A Full-Stack Code Execution and Judging Environment</p>
             
             <img src="assets/leetcode.png" alt="LeetCode Judge Hero Image" class="content-image">
             
@@ -259,22 +259,42 @@
 
         <section class="mb-12">
             <h2>Overview & Problem Solved</h2>
+
             <p>
-                [Detailed paragraph 1: Describe the project's purpose, the problem it addresses, and its overall goal for the LeetCode Judge.]
+                LeetCode Judge is a lightweight, self-hosted coding problem evaluation platform built to simulate the LeetCode experience. Designed for developers, educators, and students, it enables users to write, run, and evaluate code against test cases in real-time through a clean, interactive interface.
             </p>
             <p>
-                [Detailed paragraph 2: Elaborate on the context or the challenge you aimed to overcome with this project, specifically for the LeetCode Judge.]
+                
             </p>
         </section>
 
         <section class="mb-12">
-            <h2>Key Features</h2>
+    <h2>Key Features</h2>
+    <ul>
+        <li><strong>Live Code Execution & Evaluation:</strong>
             <ul>
-                <li><strong>Feature 1:</strong> [Describe a core feature of the LeetCode Judge and what it enables.]</li>
-                <li><strong>Feature 2:</strong> [Describe another key feature or functionality of the LeetCode Judge.]</li>
-                <li><strong>Feature 3:</strong> [Add more features as needed for the LeetCode Judge.]</li>
+                <li>Users can write and run code directly in the browser.</li>
+                <li>Backend evaluates submissions against hidden test cases.</li>
+                <li>Returns output, errors, and pass/fail status in real time.</li>
             </ul>
-        </section>
+        </li>
+        <li><strong>Admin-Controlled Problem Management:</strong>
+            <ul>
+                <li>Admins can add/edit/delete coding problems with metadata.</li>
+                <li>Each problem supports title, description, constraints, difficulty level, and test cases.</li>
+                <li>JSON or DB-based problem storage for flexibility.</li>
+            </ul>
+        </li>
+        <li><strong>Lightweight, Full-Stack Architecture:</strong>
+            <ul>
+                <li>Flask handles API requests, code execution, and test validation.</li>
+                <li>Frontend built with HTML/CSS/JavaScript or extendable with React.</li>
+                <li>Minimal dependencies, deployable on low-resource servers.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
 
         <section class="mb-12">
             <h2>Technologies</h2>
@@ -295,35 +315,50 @@
         </section>
 
         <section class="mb-12">
-            <h2>My Role & Implementation</h2>
-            <p>
-                [Describe your specific contributions and responsibilities in the LeetCode Judge project. What parts did you build? What decisions did you make?]
-            </p>
-            <p>
-                [Explain key implementation details, architectural choices, or design patterns used for the LeetCode Judge. You can add more paragraphs or even sub-headings for deeper dives.]
-            </p>
-            <img src="assets/leetcodess.png" alt="LeetCode Judge Screenshot 1" class="content-image">
-        </section>
+    <h2>Implementation</h2>
+    <p>
+        I designed and developed both the frontend and backend of the LeetCode Judge project. My responsibilities included building the code editor interface, implementing secure code execution on the backend using Python and Flask, and setting up problem management via JSON or database. I made architectural decisions focused on simplicity, extensibility, and safety.
+    </p>
+    <p>
+        On the backend, I used Flask to create a REST API that handles code submissions. Each submission is securely executed using Python's <code>subprocess</code> module with sandboxing constraints (timeouts, input validation, and output capturing). The submitted code is tested against predefined hidden test cases, and a comparison engine checks for correctness while tolerating minor formatting differences.
+    </p>
+    <p>
+        On the frontend, I created a responsive and user-friendly interface that mimics platforms like LeetCode. The editor supports input/output fields and displays results dynamically. Problems are defined in JSON format and loaded dynamically, making the platform easily scalable for additional problems or categories.
+    </p>
+    <p>
+        The design separates core logic into reusable modules, keeping concerns isolated between frontend rendering, backend execution, and test validation. This makes it easy to plug in support for new languages, expand admin functionality, or integrate authentication if required.
+    </p>
+    <img src="assets/leetcodess.png" alt="LeetCode Judge Screenshot 1" class="content-image">
+</section>
 
-        <section class="mb-12">
-            <h2>Challenges & Solutions</h2>
-            <p>
-                [Discuss a specific technical challenge you faced during the LeetCode Judge project and how you overcame it.]
-            </p>
-            <p>
-                [What did you learn from this LeetCode Judge project? Any new skills acquired or approaches discovered?]
-            </p>
-            </section>
+
+       <section class="mb-12">
+    <h2>Challenges & Solutions</h2>
+    <p>
+        One of the major technical challenges was executing user-submitted code securely on the server. Untrusted code can cause infinite loops, memory exhaustion, or even system compromise if not sandboxed properly. Initially, naive execution using <code>eval</code> and <code>exec</code> proved unsafe and unstable.
+    </p>
+    <p>
+        I overcame this by using Python’s <code>subprocess</code> module with timeouts, isolated processes, and restricted inputs. I implemented logic to prevent infinite loops, capped memory usage, and sanitized input/output. This ensured safe execution while maintaining responsiveness.
+    </p>
+    <p>
+        Another challenge was designing a clean, extensible architecture that separates the frontend interface, backend logic, and problem/test case management. I solved this by modularizing the codebase: problems are loaded via structured JSON, the backend validates output in a pluggable way, and the UI dynamically adapts based on problem metadata.
+    </p>
+    <p>
+        Through this project, I learned secure code execution patterns, better separation of concerns in full-stack apps, and how to handle edge cases in automated test evaluation systems. I also sharpened my frontend skills using clean UI principles and responsive layouts for developer tools.
+    </p>
+</section>
+
         
         <section>
-            <h2>Outcomes & Impact</h2>
-            <p>
-                [What were the results of your LeetCode Judge project? Did it achieve its goals? Any metrics or quantifiable impacts?]
-            </p>
-            <p>
-                [How does this LeetCode Judge project demonstrate your skills and capabilities as a developer?]
-            </p>
-        </section>
+    <h2>Outcomes & Impact</h2>
+    <p>
+        The LeetCode Judge project successfully achieved its goal of creating a functional, lightweight coding evaluation platform that mimics core features of professional online judges. It serves as a self-hosted alternative for practicing coding problems, running test cases, and managing problem sets with ease. The system has been tested with multiple problems and submissions, demonstrating reliable execution and accurate validation.
+    </p>
+    <p>
+        This project showcases my full-stack development capabilities — from designing responsive UIs to handling secure backend execution workflows. It reflects my ability to solve complex problems such as sandboxed code execution, modular architecture design, and test automation. The LeetCode Judge not only demonstrates technical depth, but also highlights my initiative to build practical, developer-focused tools from the ground up.
+    </p>
+</section>
+
 
         <div class="text-center mt-12">
             <a href="../index.html#projects" class="btn-secondary">
