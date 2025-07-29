@@ -243,7 +243,7 @@
     <main class="section">
         <section class="mb-12">
             <h1 class="page-hero-title">Inventory Management System</h1>
-            <p class="page-hero-tagline">[A concise tagline or subtitle for the Inventory Management System]</p>
+            <p class="page-hero-tagline">Full-Stack Django Project</p>
             
             <img src="assets/hero/inventory.png" alt="Inventory Management System Hero Image" class="content-image">
             
@@ -259,20 +259,23 @@
 
         <section class="mb-12">
             <h2>Overview & Problem Solved</h2>
-            <p>
-                [Detailed paragraph 1: Describe the project's purpose, the problem it addresses, and its overall goal for the Inventory Management System.]
-            </p>
+     
+<p>
+    The Inventory Management System was a personal project where I aimed to build a scalable, maintainable backend application using Clean Architecture principles. My goal was to solve the common challenges businesses face in tracking inventory—such as inconsistent stock data, scattered logic, and tightly coupled systems—by structuring the application in a way that separates core business logic from infrastructure concerns. This project allowed me to go beyond basic CRUD development and explore architectural patterns, modular design, and domain-driven thinking in a practical context.
+</p>
+
+            <!-- </p>
             <p>
                 [Detailed paragraph 2: Elaborate on the context or the challenge you aimed to overcome with this project, specifically for the Inventory Management System.]
-            </p>
+            </p> -->
         </section>
 
         <section class="mb-12">
             <h2>Key Features</h2>
             <ul>
-                <li><strong>Feature 1:</strong> [Describe a core feature of the Inventory Management System and what it enables.]</li>
-                <li><strong>Feature 2:</strong> [Describe another key feature or functionality of the Inventory Management System.]</li>
-                <li><strong>Feature 3:</strong> [Add more features as needed for the Inventory Management System.]</li>
+                <li><strong>Feature 1:</strong> CRUD operations for core entities like Products, Categories, InventoryItems, and Suppliers, managed through a presentation/API layer bound to application/domain logic </li>
+                <li><strong>Feature 2:</strong> Stock management & logging, including adjusting quantities, recording movement, and visibility into inventory changes.</li>
+                <li><strong>Feature 3:</strong> Filtering and lookup capabilities—searching products or inventory items by attributes or codes, likely via query endpoints or front‑end search features.</li>
             </ul>
         </section>
 
@@ -291,34 +294,47 @@
         </section>
 
         <section class="mb-12">
-            <h2>My Role & Implementation</h2>
-            <p>
-                [Describe your specific contributions and responsibilities in the Inventory Management System project. What parts did you build? What decisions did you make?]
-            </p>
-            <p>
-                [Explain key implementation details, architectural choices, or design patterns used for the Inventory Management System. You can add more paragraphs or even sub-headings for deeper dives.]
-            </p>
-            <img src="[path/to/your/inventory-management-screenshot1.jpg]" alt="Inventory Management System Screenshot 1" class="content-image">
+            <h2>Implementation</h2>
+                <ul>
+                <li>Designed and implemented the project using <strong>Clean Architecture</strong> principles to ensure separation of concerns, maintainability, and testability.</li>
+                <li>Developed the <strong>core domain models</strong> such as Product, Category, and InventoryItem, encapsulating business rules and validation logic.</li>
+                <li>Built <strong>RESTful APIs</strong> using Express.js (or appropriate framework) to handle CRUD operations for inventory items, categories, and stock management.</li>
+                <li>Implemented a robust <strong>repository pattern</strong> to abstract data access and ensure flexibility in swapping data sources (e.g., MongoDB, PostgreSQL).</li>
+                <li>Integrated <strong>middleware and validation layers</strong> to handle input validation, error handling, and response consistency.</li>
+                <li>Ensured concurrency-safe <strong>stock quantity updates</strong> using atomic database operations and transaction strategies.</li>
+                <li>Wrote <strong>unit and integration tests</strong> for key use-cases using Jest (or appropriate testing framework), improving reliability and regression safety.</li>
+                <li>Led design decisions regarding the application layering, folder structure, and interface-driven development to promote scalability.</l>
+                </ul>
+            <img src="assets/imss1.png" alt="Inventory Management System Screenshot 1" class="content-image">
+            <img src="assets/imss.png" alt="Inventory Management System Screenshot 1" class="content-image">
+
         </section>
 
         <section class="mb-12">
             <h2>Challenges & Solutions</h2>
             <p>
-                [Discuss a specific technical challenge you faced during the Inventory Management System project and how you overcame it.]
+                Concurrency and race conditions when updating stock (e.g. two requests read and update quantity simultaneously)
+                Solution: Use atomic operations/DB transactions or explicit locking; e.g. Prisma’s increment/decrement operations or transactional queries.
             </p>
             <p>
-                [What did you learn from this Inventory Management System project? Any new skills acquired or approaches discovered?]
+                Maintaining separation of concerns: Domain logic shouldn’t leak into infrastructure or API.
+                Approach: Use interfaces/abstractions in the application layer, mapping via AutoMapper, FluentValidation or MediatR pipelines (if .NET environment)
+
+                Scalability: Designing to support multiple warehouses, high product counts, or future analytics.
+                Solution: Modular architecture, pagination, indexing, microservices partitioning as needed
             </p>
             </section>
         
         <section>
-            <h2>Outcomes & Impact</h2>
+            <h2><b>Outcomes & Impact</b></h2>
             <p>
-                [What were the results of your Inventory Management System project? Did it achieve its goals? Any metrics or quantifiable impacts?]
+                <b>Improved maintainability:</b> Clean separation lets team scale features or swap out storage without affecting domain logic.
             </p>
             <p>
-                [How does this Inventory Management System project demonstrate your skills and capabilities as a developer?]
+                <b>Better reliability:</b> Domain validation and atomic updates prevent data corruption or inconsistent stock levels.
             </p>
+            <p><b>Strong architectural foundation:</b> Prepared to support testability, automated testing, and modular upgrades.</p>
+            <p> <b>Flexibility for enhancements:</b> It's easier to add features like notifications (for low stock), analytics, supplier/order tracking, or backend migration (e.g. from Firebase to SQL).</p>
         </section>
 
         <div class="text-center mt-12">
