@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidhartha Singh - Software Developer</title>
+    <title>Sidhartha Singh - Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,7 @@
         }
 
         .section {
-            padding: 8rem 0;
+            padding: 6rem 0;
             max-width: 1024px;
             margin: 0 auto;
             padding-left: 1.5rem;
@@ -55,8 +55,11 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: left;
+        }
+        #hero .max-w-4xl {
+            margin: 0;
         }
 
         .fade-in {
@@ -69,6 +72,23 @@
             transform: translateY(0);
         }
 
+        .typing-text-wrapper {
+            font-size: 2.25rem;
+            font-weight: 500;
+            color: var(--secondary-text-color);
+            line-height: 1.2;
+            margin-top: 0.5rem;
+            min-height: 2.5em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .typing-text-wrapper {
+                font-size: 3rem;
+            }
+        }
+
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -77,6 +97,7 @@
             animation: blink 1s infinite;
             margin-left: 4px;
             vertical-align: middle;
+            opacity: 0.7;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
@@ -296,7 +317,7 @@
         }
 
         h1 {
-            font-size: 4rem; /* Significantly larger for the name */
+            font-size: 4rem;
             font-weight: 700;
             line-height: 1.1;
             color: var(--primary-text-color);
@@ -596,21 +617,25 @@
         <main>
             <section id="hero" class="section">
                 <div class="max-w-4xl">
-                    <h1 class="text-4xl md:text-7xl font-bold fade-in" style="transition-delay: 100ms;">Sidhartha Singh.</h1>
-                    <h2 class="text-3xl md:text-5xl font-bold text-secondary-text-color mt-2 fade-in" style="transition-delay: 200ms;">
-                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    <p class="intro-text text-lg md:text-xl text-secondary-text-color mb-4 fade-in" style="transition-delay: 100ms;">Hi, my name is</p>
+                    <h1 class="text-5xl md:text-8xl font-bold fade-in" style="transition-delay: 200ms;">Sidhartha Singh.</h1>
+                    <h2 class="text-3xl md:text-5xl font-bold text-primary-text-color mt-2 fade-in" style="transition-delay: 300ms; text-align: left;">
+                        Software Engineer
                     </h2>
-                    <p class="mt-6 max-w-xl text-lg text-secondary-text-color fade-in" style="transition-delay: 400ms;">
+                    <h3 class="typing-text-wrapper fade-in" style="transition-delay: 400ms;">
+                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    </h3>
+                    <!-- <p class="mt-6 max-w-xl text-lg text-secondary-text-color fade-in" style="transition-delay: 500ms;">
                         I'm a computer science undergraduate skilled in architecting resilient, high-throughput distributed systems. Experienced across the full product lifecycle and full-stack development, I resolve complex challenges with meticulous attention to detail and clear communication.
-                    </p>
-                    <div class="mt-8 flex justify-center items-center space-x-6 fade-in" style="transition-delay: 500ms;">
+                    </p> -->
+                    <div class="mt-8 flex justify-start items-center space-x-6 fade-in" style="transition-delay: 600ms;">
                         <a href="https://github.com/sidhartthhhhh" target="_blank" class="social-icon" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/sidhartthhhhh/" target="_blank" class="social-icon" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
                         <a href="https://stackoverflow.com/users/21678074/sidhartthhhhh" target="_blank" class="social-icon" aria-label="Stack Overflow Profile"><i class="fas fa-code"></i></a>
                         <a href="https://leetcode.com/u/sidhartthhh/" target="_blank" class="social-icon" aria-label="LeetCode Profile"><i class="fab fa-hackerrank"></i></a>
                         <a href="https://drive.google.com/file/d/1VNm2S0a2HrFHMT_pYHU19lDIkdxBSwxM/view?usp=sharing" target="_blank" class="social-icon" aria-label="Download Resume"><i class="fas fa-file-arrow-down"></i></a>
                     </div>
-                    <div class="mt-8 fade-in" style="transition-delay: 600ms;">
+                    <div class="mt-8 flex justify-start fade-in" style="transition-delay: 700ms;">
                         <a href="#projects" class="btn-primary">
                             Explore My Work
                         </a>
@@ -757,7 +782,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <a href="projects/inventory-management.html" class="project-card">
                             <div class="project-thumbnail">
-                                <img src="[path/to/your/inventory-management-thumbnail.jpg]" alt="Inventory Management System Thumbnail">
+                                <img src="projects/assets/inventory.png" alt="Inventory Management System Thumbnail">
                             </div>
                             <h3>Inventory Management System</h3>
                             <p>A full-stack inventory system using Django, integrating SQLite for transactional data and role-based access control.</p>
@@ -769,7 +794,7 @@
                         </a>
                         <a href="projects/real-estate-ai.html" class="project-card">
                             <div class="project-thumbnail">
-                                <img src="[path/to/your/real-estate-ai-thumbnail.jpg]" alt="Real Estate News Assistant Thumbnail">
+                                <img src="projects/assets/RealEstate.png" alt="Real Estate News Assistant Thumbnail">
                             </div>
                             <h3>Real Estate News Assistant</h3>
                             <p>A RAG-based assistant for fast, accurate, and cited summaries from real estate news articles using LLAMA 3.</p>
@@ -782,7 +807,7 @@
                         </a>
                         <a href="projects/leetcode-judge.html" class="project-card">
                             <div class="project-thumbnail">
-                                <img src="[path/to/your/leetcode-judge-thumbnail.jpg]" alt="LeetCode Judge Thumbnail">
+                                <img src="projects/assets/leetcode.png" alt="LeetCode Judge Thumbnail">
                             </div>
                             <h3>LeetCode Judge</h3>
                             <p>An online judge to compile and run code in isolated Docker containers, featuring a REST API for code submission.</p>
@@ -795,7 +820,7 @@
                         </a>
                         <a href="projects/url-shortener.html" class="project-card">
                             <div class="project-thumbnail">
-                                <img src="[path/to/your/url-shortener-thumbnail.jpg]" alt="URL Shortener Thumbnail">
+                                <img src="projects/assets/urlshortener.png" alt="URL Shortener Thumbnail">
                             </div>
                             <h3>URL Shortener</h3>
                             <p>A scalable URL shortening service with a clean API, built with a focus on high availability and low latency using Go and Redis.</p>
@@ -803,7 +828,6 @@
                                 <span class="skill-badge">Go</span>
                                 <span class="skill-badge">Redis</span>
                                 <span class="skill-badge">REST API</span>
-                                <span class="skill-badge">Backend</span>
                             </div>
                         </a>
                     </div>
