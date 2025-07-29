@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener - Sidhartha Singh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Apple-inspired color palette: white background, subtle grays, black text, blue accent */
+            --bg-color: #FFFFFF; /* Pure white background */
+            --primary-text-color: #1D1D1F; /* Apple's deep black for primary text */
+            --secondary-text-color: #6C6C70; /* Mid-gray for secondary text */
+            --accent-color: #007AFF; /* Apple Blue */
+            --light-gray: #F5F5F7; /* Light gray for subtle backgrounds/separators */
+            --medium-gray: #E8E8ED; /* Slightly darker gray for borders/dividers */
+            --dark-gray: #333336; /* Darker gray for some elements if needed (less common for backgrounds) */
+            --shadow-color: rgba(0, 0, 0, 0.08); /* Light, subtle shadow */
+            --card-bg-color: #F8F8F8; /* Very light gray for cards */
+        }
+        body {
+            /* System font stack for Apple's San Francisco look */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            line-height: 1.55; /* Refined line height for readability */
+            -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+            -moz-osx-font-smoothing: grayscale; /* Smoother font rendering */
+        }
+        .section {
+            padding: 8rem 0; /* Generous vertical padding */
+            max-width: 1024px; /* Constrain content width for readability */
+            margin: 0 auto; /* Center sections */
+            padding-left: 1.5rem; /* Tailwind's px-6 equivalent */
+            padding-right: 1.5rem; /* Tailwind's px-6 equivalent */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .section {
+                padding-left: 4rem; /* Tailwind's px-16 equivalent */
+                padding-right: 4rem; /* Tailwind's px-16 equivalent */
+            }
+        }
+
+        /* Sticky Header / Navbar (copied from index.html for consistency) */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            backdrop-filter: blur(15px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--medium-gray); /* Subtle separator line */
+            padding-top: 1rem; /* pt-4 */
+            padding-bottom: 1rem; /* pb-4 */
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Very subtle shadow */
+        }
+        header .container {
+            max-width: 1024px; /* Match section width */
+            margin: 0 auto;
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            header .container {
+                padding-left: 4rem; /* px-16 */
+                padding-right: 4rem; /* px-16 */
+            }
+        }
+        header a.logo {
+            color: var(--primary-text-color); /* Black logo text */
+            font-weight: 600; /* Semi-bold */
+            font-size: 1.5rem; /* text-2xl */
+        }
+        header button#mobile-menu-button { /* Only if you want a mobile menu on detail pages */
+             display: none; /* Hide mobile menu button on detail pages */
+        }
+        
+        /* General Link Styling */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        a:hover {
+            color: #3399FF; /* Slightly lighter blue on hover */
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 500;
+            padding: 0.8rem 1.8rem;
+            border-radius: 9999px;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #0066cc;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 500;
+            padding: 0.8rem 1.8rem;
+            border-radius: 9999px;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        /* Headings */
+        .page-hero-title {
+            font-size: 4rem; /* Even larger for product hero */
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--primary-text-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .page-hero-tagline {
+            font-size: 1.75rem;
+            color: var(--secondary-text-color);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        h2 {
+            font-size: 2.25rem; /* Section titles within detail page */
+            font-weight: 600;
+            color: var(--primary-text-color);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            margin-top: 3rem; /* Space between sections */
+        }
+        h3 {
+            font-size: 1.5rem; /* Subheadings within sections */
+            font-weight: 600;
+            color: var(--primary-text-color);
+            margin-bottom: 1rem;
+        }
+        p {
+            color: var(--secondary-text-color);
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 1rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Image Styling within content */
+        .content-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Skill badges (copied for consistency) */
+        .skill-badge {
+            background-color: var(--light-gray);
+            color: var(--secondary-text-color);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--medium-gray);
+            transition: all 0.2s ease;
+        }
+        .skill-badge:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Footer (copied from index.html for consistency) */
+        footer {
+            background-color: var(--light-gray);
+            color: var(--secondary-text-color);
+            padding: 2rem 0;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        footer > div {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            footer > div {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+        
+        /* Mobile specific adjustments for detail page */
+        @media (max-width: 767px) { /* targets smaller screens */
+            .page-hero-title {
+                font-size: 2.5rem;
+                margin-top: 2rem; /* Give space below header */
+            }
+            .page-hero-tagline {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
+            }
+            .section {
+                padding: 4rem 1rem; /* Reduced padding on small screens */
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container flex justify-between items-center">
+            <a href="../index.html" class="logo">S.S.</a> </nav>
+    </header>
+
+    <main class="section">
+        <section class="mb-12">
+            <h1 class="page-hero-title">URL Shortener</h1>
+            <p class="page-hero-tagline">[A concise tagline or subtitle for the URL Shortener]</p>
+            
+            <img src="[path/to/your/url-shortener-hero-image.jpg]" alt="URL Shortener Hero Image" class="content-image">
+            
+            <div class="flex justify-center gap-4 mt-8">
+                <a href="[Your URL Shortener GitHub Repo Link]" target="_blank" class="btn-primary">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+                <a href="[Your URL Shortener Live Demo Link]" target="_blank" class="btn-secondary">
+                    <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2>Overview & Problem Solved</h2>
+            <p>
+                [Detailed paragraph 1: Describe the project's purpose, the problem it addresses, and its overall goal for the URL Shortener.]
+            </p>
+            <p>
+                [Detailed paragraph 2: Elaborate on the context or the challenge you aimed to overcome with this project, specifically for the URL Shortener.]
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Feature 1:</strong> [Describe a core feature of the URL Shortener and what it enables.]</li>
+                <li><strong>Feature 2:</strong> [Describe another key feature or functionality of the URL Shortener.]</li>
+                <li><strong>Feature 3:</strong> [Add more features as needed for the URL Shortener.]</li>
+            </ul>
+        </section>
+
+        <section class="mb-12">
+            <h2>Technologies</h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="skill-badge">Go</span>
+                <span class="skill-badge">Redis</span>
+                <span class="skill-badge">REST API</span>
+                <span class="skill-badge">Backend</span>
+                <span class="skill-badge">Scalability</span>
+                <span class="skill-badge">High Availability</span>
+                </div>
+        </section>
+
+        <section class="mb-12">
+            <h2>My Role & Implementation</h2>
+            <p>
+                [Describe your specific contributions and responsibilities in the URL Shortener project. What parts did you build? What decisions did you make?]
+            </p>
+            <p>
+                [Explain key implementation details, architectural choices, or design patterns used for the URL Shortener. You can add more paragraphs or even sub-headings for deeper dives.]
+            </p>
+            <img src="[path/to/your/url-shortener-screenshot1.jpg]" alt="URL Shortener Screenshot 1" class="content-image">
+        </section>
+
+        <section class="mb-12">
+            <h2>Challenges & Solutions</h2>
+            <p>
+                [Discuss a specific technical challenge you faced during the URL Shortener project and how you overcame it.]
+            </p>
+            <p>
+                [What did you learn from this URL Shortener project? Any new skills acquired or approaches discovered?]
+            </p>
+            </section>
+        
+        <section>
+            <h2>Outcomes & Impact</h2>
+            <p>
+                [What were the results of your URL Shortener project? Did it achieve its goals? Any metrics or quantifiable impacts?]
+            </p>
+            <p>
+                [How does this URL Shortener project demonstrate your skills and capabilities as a developer?]
+            </p>
+        </section>
+
+        <div class="text-center mt-12">
+            <a href="../index.html#projects" class="btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Projects
+            </a>
+        </div>
+    </main>
+
+    <footer class="text-center text-secondary-text-color text-sm">
+        <div>Designed & Built by Sidhartha Singh</div>
+    </footer>
+</body>
+</html>
